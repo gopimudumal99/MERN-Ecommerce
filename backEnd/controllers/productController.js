@@ -11,21 +11,19 @@ exports.getAllProducts = catchAsynError(async(req, res) => {
   });
 });
 
-
 //Get One Product
 exports.getoneProduct = catchAsynError(async (req, res,next) => {
   let product = await Product.findById(req.params.id);
-    if (!product) { 
+    if (!product) {
         return next(new ErrorHander("Product not found",404))
     }
     product = await Product.findById(req.params.id);
-  
+
     res.status(200).json({
     sucsses: true,
     product
   });
 })
-
 
 //Create a product ---> Admin
 exports.createProduct = catchAsynError(async (req, res) => {
@@ -35,7 +33,6 @@ exports.createProduct = catchAsynError(async (req, res) => {
     product,
   });
 });
-
 
 //Update a product ---> Admin
 exports.updateProduct = catchAsynError(async (req, res,next) => {
@@ -50,7 +47,6 @@ exports.updateProduct = catchAsynError(async (req, res,next) => {
     })
 });
 
-
 //Delete a product ---> Admin
 exports.deleteProduct = catchAsynError(async (req, res,next) => {
   let product = await Product.findById(req.params.id);
@@ -63,3 +59,4 @@ exports.deleteProduct = catchAsynError(async (req, res,next) => {
     message:"Product is deleted"
   });
 });
+
