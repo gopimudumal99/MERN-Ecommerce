@@ -29,7 +29,7 @@ const server = app.listen(process.env.PORT, () => {
 });
 
 
-console.log(product)
+
 // Unhandle Promise Rejections
 process.on("unhandledRejection", (err) => {
   console.log(`Error: ${err.message}`);
