@@ -1,12 +1,12 @@
 const Product = require("../models/product.model");
 const ErrorHander = require("../utils/errorHander");
 const catchAsynError = require("../middleware/catchAsyncErrors");
-const myQueryApi = require("../utils/myapiFeatures")
+const myQueryApi = require("../utils/myapiFeatures");
 
 // Get All Products
 exports.getAllProducts = catchAsynError(async (req, res) => {
-  const resultPerPage = 5
-  const productCount = await Product.countDocuments()
+  const resultPerPage = 5;
+  const productCount = await Product.countDocuments();
   const myQueries = new myQueryApi(Product.find(), req.query)
     .search()
     .filter()
