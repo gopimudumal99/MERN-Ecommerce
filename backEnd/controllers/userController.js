@@ -15,13 +15,13 @@ exports.registerUser = catchAsynError(async (req, res, next) => {
     },
   });
 
-//   const token = user.getJWTToken();
+  // const token = user.getJWTToken();
 
-//   res.status(201).json({
-//     success: true,
-//     token,
-//   });
-sendToken(user, 2001, res);    
+  // res.status(201).json({
+  //   success: true,
+  //   token,
+  // });
+  return sendToken(user, 2001, res);
 });
 
 //Login User

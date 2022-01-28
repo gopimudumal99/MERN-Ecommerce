@@ -3,6 +3,17 @@ const ErrorHander = require("../utils/errorHander");
 const catchAsynError = require("../middleware/catchAsyncErrors");
 const myQueryApi = require("../utils/myapiFeatures");
 
+//Create a product ---> Admin
+exports.createProduct = catchAsynError(async (req, res) => {
+  req.body.user = req.user.id
+  const product = await Product.create(req.body);
+  res.status(201).json({
+    sucsses: true,
+    product,
+  });
+});
+
+
 // Get All Products
 exports.getAllProducts = catchAsynError(async (req, res) => {
   const resultPerPage = 5;
@@ -35,14 +46,6 @@ exports.getoneProduct = catchAsynError(async (req, res, next) => {
   });
 });
 
-//Create a product ---> Admin
-exports.createProduct = catchAsynError(async (req, res) => {
-  const product = await Product.create(req.body);
-  res.status(201).json({
-    sucsses: true,
-    product,
-  });
-});
 
 //Update a product ---> Admin
 exports.updateProduct = catchAsynError(async (req, res, next) => {
